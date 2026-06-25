@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DocumentIngestion.ChunkingService/DocumentIngestion.ChunkingService.csproj" />
+    <Project Path="src/DocumentIngestion.Connectors/DocumentIngestion.Connectors.csproj" />
+    <Project Path="src/DocumentIngestion.Contracts/DocumentIngestion.Contracts.csproj" />
+    <Project Path="src/DocumentIngestion.EmbeddingService/DocumentIngestion.EmbeddingService.csproj" />
+    <Project Path="src/DocumentIngestion.Messaging/DocumentIngestion.Messaging.csproj" />
+    <Project Path="src/DocumentIngestion.QueryService/DocumentIngestion.QueryService.csproj" />
+    <Project Path="src/DocumentIngestion.VectorDbWriter/DocumentIngestion.VectorDbWriter.csproj" />
+  </Folder>
+</Solution>

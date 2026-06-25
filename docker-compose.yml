@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.6.0
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+
+  kafka:
+    image: confluentinc/cp-kafka:7.6.0
+    depends_on: [zookeeper]
+    ports: ["9092:9092"]
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    ports: ["5672:5672", "15672:15672"]
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+
+  qdrant:
+    image: qdrant/qdrant:v1.9.1
+    ports: ["6333:6333", "6334:6334"]
+    volumes: ["qdrant_data:/qdrant/storage"]
+
+  chunking-service:
+    build:
+      context: .
+      dockerfile: src/DocumentIngestion.ChunkingService/Dockerfile
+    environment:
+      - ServiceBus__ConnectionString=${SERVICEBUS_CONNECTION}
+      - BlobStorage__ConnectionString=${BLOB_CONNECTION}
+    depends_on: [kafka]
+
+  embedding-service:
+    build:
+      context: .
+      dockerfile: src/DocumentIngestion.EmbeddingService/Dockerfile
+    environment:
+      - ServiceBus__ConnectionString=${SERVICEBUS_CONNECTION}
+      - Embedding__AzureOpenAiEndpoint=${OPENAI_ENDPOINT}
+      - Embedding__AzureOpenAiKey=${OPENAI_KEY}
+    depends_on: [chunking-service]
+
+  vectordb-writer:
+    build:
+      context: .
+      dockerfile: src/DocumentIngestion.VectorDbWriter/Dockerfile
+    environment:
+      - ServiceBus__ConnectionString=${SERVICEBUS_CONNECTION}
+      - Qdrant__Host=qdrant
+    depends_on: [qdrant, embedding-service]
+
+volumes:
+  qdrant_data:

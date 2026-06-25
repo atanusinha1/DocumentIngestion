@@ -1,0 +1,36 @@
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: di_rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  azurite:
+    image: mcr.microsoft.com/azure-storage/azurite
+    container_name: di_azurite
+    ports:
+      - "10000:10000"
+    command: "azurite --blobHost 0.0.0.0 --loose --skipApiVersionCheck"
+    volumes:
+      - azurite_data:/data
+
+  qdrant:
+    image: qdrant/qdrant:v1.9.1
+    container_name: di_qdrant
+    ports:
+      - "6333:6333"
+      - "6334:6334"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+volumes:
+  rabbitmq_data:
+  azurite_data:
+  qdrant_data:

@@ -1,0 +1,199 @@
+# ── .NET Build Output ─────────────────────────────────────────────────────────
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ── .NET Runtime & SDK ────────────────────────────────────────────────────────
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ── NuGet ─────────────────────────────────────────────────────────────────────
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+nuget.config.bak
+**/[Pp]ackages/
+!**/[Pp]ackages/build/
+
+# ── Visual Studio ─────────────────────────────────────────────────────────────
+.vs/
+*.sln.ide/
+*.VC.db
+*.VC.VC.opendb
+*.pidb
+*.svd
+*.opensdf
+*.sdf
+*.cachefile
+*.aps
+*.ncb
+*.opendb
+*.dbmdl
+*.jfm
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.pfx
+*.publishsettings
+
+# ── Rider ─────────────────────────────────────────────────────────────────────
+.idea/
+*.sln.iml
+.idea.DocumentIngestion.dir/
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+.vscode/
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# ── Secrets & Environment ─────────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+appsettings.Production.json
+appsettings.Staging.json
+**/appsettings.*.local.json
+**/secrets.json
+**/local.settings.json
+
+# ── Azure / Cloud credentials ─────────────────────────────────────────────────
+*.publishprofile
+*.pubxml
+*.pubxml.user
+ServiceAccountKey.json
+*-credentials.json
+azure-credentials.json
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+# Keep docker-compose files but ignore overrides with secrets
+docker-compose.override.yml
+docker-compose.*.override.yml
+.docker/
+
+# ── Local dev data (Azurite, Qdrant, RabbitMQ volumes) ───────────────────────
+__azurite_db_blob__.json
+__azurite_db_blob_extent__.json
+__blobstorage__/
+__queuestorage__/
+__tablestorage__/
+qdrant_storage/
+rabbitmq_data/
+
+# ── PDF hot-folder data ───────────────────────────────────────────────────────
+/tmp/di-pdfs/
+**/di-pdfs/
+
+# ── Ollama local models (large binary files) ──────────────────────────────────
+.ollama/
+ollama_data/
+
+# ── Test results ──────────────────────────────────────────────────────────────
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+TestResult.xml
+coverage/
+*.coverage
+*.coveragexml
+*.trx
+lcov.info
+
+# ── Publish output ────────────────────────────────────────────────────────────
+**/publish/
+**/PublishScripts/
+*_i.c
+*_p.c
+*_h.h
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# ── Roslyn / Analyzers ────────────────────────────────────────────────────────
+*.ncrunchsolution
+*.ncrunchproject
+*.[Cc]ache
+![Ss]tyle[Cc]op.[Cc]ache
+StyleCopReport.xml
+
+# ── Windows specific ──────────────────────────────────────────────────────────
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ── JetBrains / ReSharper ─────────────────────────────────────────────────────
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+TeamCity/
+
+# ── Kubernetes ────────────────────────────────────────────────────────────────
+# Keep manifests but ignore generated/secret files
+k8s/*-secret.yaml
+k8s/*-secrets.yaml
+kubeconfig
+*.kubeconfig
+
+# ── Node (if any tooling added later) ─────────────────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.bak
+*.swp
+*.swo
+*~
+.history/
+.localhistory/
